@@ -24,4 +24,4 @@ resources:
       configurationSource:
         repositoryId: XXXXXXXXXX
         commitId: XXXXXXXX
-        sourceDirectory: /terraform//Basic AWS
+        sourceDirectory: /terraform/Basic AWS
