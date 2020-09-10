@@ -1,0 +1,27 @@
+inputs:
+  region:
+    type: string
+    default: us-east-2
+  ssh_key_name:
+    type: string
+    default: chamgeMe
+  hostname:
+    type: string
+    default: changeMe
+resources:
+  terraform:
+    type: Cloud.Terraform.Configuration
+    properties:
+      variables:
+        region: '${input.region}'
+        ssh_key_name: '${input.ssh_key_name}'
+        hostname: '${input.hostname}'
+      providers:
+        - name: aws
+          # List of available cloud zones: Will get populated during create from
+          cloudZone: *********
+      terraformVersion: 0.12.26
+      configurationSource:
+        repositoryId: XXXXXXXXXX
+        commitId: XXXXXXXX
+        sourceDirectory: /terraform//Basic AWS
