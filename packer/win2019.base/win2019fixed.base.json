@@ -62,16 +62,7 @@
       "elevated_user": "Administrator",
       "elevated_password": "{{user `winadmin-password`}}",
       "script": "../scripts/disable-windows-updates.ps1"
-      },
-      {
-      "type": "windows-update",
-      "search_criteria": "IsInstalled=0",
-      "filters": [
-          "exclude:$_.Title -like '*Preview*'",
-          "include:$true"
-      ],
-      "update_limit": 25
-    }
+      }
   ],
   "sensitive-variables": [
     "vsphere_password",
