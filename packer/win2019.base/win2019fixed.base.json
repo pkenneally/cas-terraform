@@ -52,7 +52,7 @@
       "content_library_destination": {
         "library": "DAG Packer Library",
         "destroy": true,
-        "name": "W2K19-Packer-{{isotime | clean_resource_name}}"
+        "name": "W2K19-Packer-{{env 'BUILDTIME'}}"
       }
     }
   ],
