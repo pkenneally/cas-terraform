@@ -48,12 +48,7 @@
       "vcenter_server": "{{user `vsphere-server`}}",
       "vm_name": "{{user `vm-name`}}",
       "winrm_password": "{{user `winadmin-password`}}",
-      "winrm_username": "Administrator",
-      "content_library_destination": {
-        "library": "DAG Packer Library",
-        "destroy": true,
-        "name": "W2K19-Packer-{{user `buildtime`}}"
-      }
+      "winrm_username": "Administrator"
     }
   ],
   "provisioners": [
