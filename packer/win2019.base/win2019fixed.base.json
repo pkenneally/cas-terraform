@@ -52,7 +52,7 @@
       "content_library_destination": {
         "library": "DAG Packer Library",
         "destroy": true,
-        "name": "W2K19-Packer-{{env `BUILDTIME`}}"
+        "name": "W2K19-Packer-{{user `buildtime`}}"
       }
     }
   ],
@@ -82,7 +82,8 @@
     "vsphere-password": "{{env `VCPASS`}}",
     "vsphere-server": "{{env `VCSERVER`}}",
     "vsphere-user": "{{env `VCUSER`}}",
-    "winadmin-password": "S3cr3t0!"
+    "winadmin-password": "S3cr3t0!",
+    "buildtime": "{{env `BUILDTIME`}}"
   }
 }
 
