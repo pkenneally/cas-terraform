@@ -69,7 +69,7 @@
     "vm-disk-size": "40960",
     "vm-mem-size": "4096",
     "vm-name": "Win2019-dg-tmpl-Packer-{{timestamp}}",
-    "vsphere-cluster": "{{env `VCLUSTER`}}",
+    "vsphere-cluster": "{{env `VCCLUSTER`}}",
     "vsphere-datacenter": "{{env `VCDATACENTER`}}",
     "vsphere-datastore": "{{env `VCDATASTORE`}}",
     "vsphere-folder": "Packer Templates",
