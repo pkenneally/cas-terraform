@@ -1,0 +1,97 @@
+{
+  "builders": [
+    {
+      "CPUs": "{{user `vm-cpu-num`}}",
+      "RAM": "{{user `vm-mem-size`}}",
+      "RAM_reserve_all": false,
+      "cluster": "{{user `vsphere-cluster`}}",
+      "communicator": "winrm",
+      "convert_to_template": "false",
+      "datacenter": "{{user `vsphere-datacenter`}}",
+      "datastore": "{{user `vsphere-datastore`}}",
+      "disk_controller_type": "lsilogic-sas",
+      "firmware": "bios",
+      "floppy_files": [
+        "autounattend.xml",
+        "../scripts/disable-network-discovery.cmd",
+        "../scripts/enable-rdp.cmd",
+        "../scripts/enable-winrm.ps1",
+        "../scripts/install-vm-tools.cmd",
+        "../scripts/set-temp.ps1",
+        "../scripts/win-updates.ps1",
+        "../scripts/disable-all-fw.ps1"
+      ],
+      "folder": "{{user `vsphere-folder`}}",
+      "guest_os_type": "windows9Server64Guest",
+      "insecure_connection": "true",
+      "iso_paths": [
+        "{{user `os_iso_path`}}",
+        "[] /vmimages/tools-isoimages/windows.iso"
+      ],
+      "remove_cdrom": true,
+      "network_adapters": [
+        {
+          "network": "{{user `vsphere-network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "password": "{{user `vsphere-password`}}",
+      "storage": [
+        {
+          "disk_size": "{{user `vm-disk-size`}}",
+          "disk_thin_provisioned": true
+        }
+        
+      ],
+      "type": "vsphere-iso",
+      "username": "{{user `vsphere-user`}}",
+      "vcenter_server": "{{user `vsphere-server`}}",
+      "vm_name": "{{user `vm-name`}}",
+      "winrm_password": "{{user `winadmin-password`}}",
+      "winrm_username": "Administrator",
+      "content_library_destination": {
+        "library": "DAG Packer Library",
+        "destroy": true,
+        "name": "W2K19-Packer-{{isotime | clean_resource_name}}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "elevated_user": "Administrator",
+      "elevated_password": "{{user `winadmin-password`}}",
+      "script": "../scripts/disable-windows-updates.ps1"
+      },
+      {
+      "type": "windows-update",
+      "search_criteria": "IsInstalled=0",
+      "filters": [
+          "exclude:$_.Title -like '*Preview*'",
+          "include:$true"
+      ],
+      "update_limit": 25
+    }
+  ],
+  "sensitive-variables": [
+    "vsphere_password",
+    "winadmin_password"
+  ],
+  "variables": {
+    "os_iso_path": "[hq-tintri2-af] ISOs/win2k19_Eval.iso",
+    "vm-cpu-num": "2",
+    "vm-disk-size": "40960",
+    "vm-mem-size": "4096",
+    "vm-name": "Win2019-dg-tmpl-Packer-{{timestamp}}",
+    "vsphere-cluster": "{{env `VCLUSTER`}}",
+    "vsphere-datacenter": "{{env `VCDATACENTER`}}",
+    "vsphere-datastore": "{{env `VCDATASTORE`}}",
+    "vsphere-folder": "Packer Templates",
+    "vsphere-network": "{{env `VCNETWORK`}}",
+    "vsphere-password": "{{env `VCPASS`}}",
+    "vsphere-server": "{{env `VCSERVER`}}",
+    "vsphere-user": "{{env `VCUSER`}}",
+    "winadmin-password": "S3cr3t0!"
+  }
+}
+
