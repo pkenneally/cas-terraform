@@ -6,7 +6,7 @@
       "RAM_reserve_all": false,
       "cluster": "{{user `vsphere-cluster`}}",
       "communicator": "winrm",
-      "convert_to_template": "false",
+      "convert_to_template": "true",
       "datacenter": "{{user `vsphere-datacenter`}}",
       "datastore": "{{user `vsphere-datastore`}}",
       "disk_controller_type": "lsilogic-sas",

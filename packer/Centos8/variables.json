@@ -1,0 +1,23 @@
+{
+    "vcenter_server": "{{ env `VCSERVER`}}",
+    "vcenter_username": "{{ env `VCUSER`}}",
+    "vcenter_password": "{{ env `VCPASS`}}",
+    "vcenter_datastore": "{{ env `VCDATASTORE`}}",
+    "vcenter_folder": "{{ env `VCFOLDER`}}",
+    "vcenter_cluster": "{{ env `VCCLUSTER`}}",
+    "vcenter_network": "{{ env `VCNETWORK`}}",
+
+    "buildtime": "{{ env `BUILDTIME`}}",
+
+    "ssh_username": "{{ env `SSHUSER`}}",
+    "ssh_password": "{{ env `SSHPASS`}}",
+
+    "winrm_username": "Administrator",
+    "winrm_password": "{{ env `SSHPASS`}}",
+
+    "http_server": "https://raw.githubusercontent.com/VMwareCMBUTMM/fielddemo-packer-templates/master/config",
+
+    "centos8_vm_name": "packer-centos8",
+    "centos8_iso": "[hq-tintri2-af] ISOs/CentOS-8.2.2004-x86_64-minimal.iso",
+    "centos8_checksum": "47ab14778c823acae2ee6d365d76a9aed3f95bb8d0add23a06536b58bb5293c0"
+}
