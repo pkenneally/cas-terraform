@@ -15,7 +15,7 @@
     "winrm_username": "Administrator",
     "winrm_password": "{{ env `SSHPASS`}}",
 
-    "http_server": "https://raw.githubusercontent.com/VMwareCMBUTMM/fielddemo-packer-templates/master/config",
+    "http_server": "https://raw.githubusercontent.com/americanbwana/cas-terraform-packer/master/packer/config",
 
     "centos8_vm_name": "packer-centos8",
     "centos8_iso": "[hq-tintri2-af] ISOs/CentOS-8.2.2004-x86_64-minimal.iso",
