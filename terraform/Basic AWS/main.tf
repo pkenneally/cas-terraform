@@ -47,7 +47,7 @@ resource "aws_security_group" "ubuntu" {
 
 resource "aws_instance" "ubuntu" {
   key_name = var.ssh_key_name
-  ami           = "ami-011bc24cdc2e99df7"
+  ami           = "ami-043ff3492915f94bd"
   instance_type = "t2.micro"
 
   tags = {
