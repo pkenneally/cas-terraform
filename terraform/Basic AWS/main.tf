@@ -49,13 +49,7 @@ resource "aws_instance" "ubuntu" {
   key_name = var.ssh_key_name
   ami           = "ami-centos-7-1.11.3-00-1537830214"
   instance_type = "t2.micro"
-  # root disk
-  root_block_device {
-    volume_size           = "12"
-    volume_type           = "gp2"
-    encrypted             = true
-    delete_on_termination = true
-
+ 
   tags = {
     Name = "${var.hostname}"
   }
@@ -67,13 +61,13 @@ resource "aws_instance" "ubuntu" {
   ebs_block_device {
     device_name = "/dev/sda2"
     volume_type = "gp2"
-    volume_size = 30
+    volume_size = 3
     encrypted = true
   }
 
   root_block_device {
     encrypted = true 
-    volume_size = 30 
+    volume_size = 2 
     volume_type = "gp2" 
   }
 }
