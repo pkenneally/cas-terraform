@@ -1,7 +1,7 @@
 
 variable "region" {
   type = string
-  default = "us-east-2"
+  default = "eu-west-1"
 }
 
 variable "ssh_key_name" {
