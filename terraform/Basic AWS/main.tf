@@ -49,6 +49,12 @@ resource "aws_instance" "ubuntu" {
   key_name = var.ssh_key_name
   ami           = "ami-centos-7-1.11.3-00-1537830214"
   instance_type = "t2.micro"
+  # root disk
+  root_block_device {
+    volume_size           = "12"
+    volume_type           = "gp2"
+    encrypted             = true
+    delete_on_termination = true
 
   tags = {
     Name = "${var.hostname}"
