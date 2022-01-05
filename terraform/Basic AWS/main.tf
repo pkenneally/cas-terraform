@@ -67,7 +67,7 @@ resource "aws_instance" "ubuntu" {
 
   root_block_device {
     encrypted = true 
-    volume_size = 2 
+    volume_size = 9 
     volume_type = "gp2" 
   }
 }
